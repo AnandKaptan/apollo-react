@@ -10,6 +10,6 @@ module.exports = {
   },
   rules: {
     'react/jsx-filename-extension': 'off',
-    'prettier/prettier': 'error',
+    'prettier/prettier': ['error', { singleQuote: true }],
   },
 };
