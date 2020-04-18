@@ -1,7 +1,7 @@
 import React from 'react';
 import { useQuery } from '@apollo/react-hooks';
 import { Segment, Card, Divider, Loader } from 'semantic-ui-react';
-import { QUERY_AVAILABLE_ITEMS } from '../typedefs';
+import QUERY_AVAILABLE_ITEMS from '../typedefs';
 import Item from './Item';
 
 const ItemsForSale = () => {
