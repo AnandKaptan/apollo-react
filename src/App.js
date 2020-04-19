@@ -2,8 +2,9 @@ import React from "react";
 import ApolloClient, { InMemoryCache } from "apollo-boost";
 import { ApolloProvider } from "@apollo/react-hooks";
 import { available_items as AvailableItems } from "./data/availableItems";
-import { Container, Grid, Segment } from "semantic-ui-react";
+import { Container, Grid, Segment, Header } from "semantic-ui-react";
 import ItemsForSale from "./components/ItemsForSale";
+import UserCart from "./components/UserCart";
 import resolvers from "./resolvers";
 
 const cache = new InMemoryCache({});
@@ -27,11 +28,12 @@ const App = () => {
   return (
     <ApolloProvider client={client}>
       <Container>
+        <br />
         <Grid>
           <Grid.Row columns={1}>
             <Grid.Column>
               <Segment>
-                <h2>Local State Management using Apollo</h2>
+                <Header as="h1">Local State Management using Apollo</Header>
               </Segment>
             </Grid.Column>
           </Grid.Row>
@@ -39,7 +41,9 @@ const App = () => {
             <Grid.Column width={11}>
               <ItemsForSale />
             </Grid.Column>
-            <Grid.Column width={5}>Column Two</Grid.Column>
+            <Grid.Column width={5}>
+              <UserCart />
+            </Grid.Column>
           </Grid.Row>
         </Grid>
       </Container>
