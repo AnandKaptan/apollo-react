@@ -24,3 +24,14 @@ export const QUERY_CART_INFO = gql`
     currency @client
   }
 `;
+
+export const MUTATION_ADD_ITEM_TO_CART = gql`
+  mutation($id: String!) {
+    addItemToCart(id: $id) @client
+  }
+`;
+export const MUTATION_DELETE_ITEM_FROM_CART = gql`
+  mutation($id: String!) {
+    deleteItemFromCart(id: $id) @client
+  }
+`;
