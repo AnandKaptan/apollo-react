@@ -1,7 +1,12 @@
 import React from 'react';
 import { Card, Button, Image } from 'semantic-ui-react';
+import { MUTATION_ADD_ITEM_TO_CART } from '../typedefs';
+import { useMutation } from '@apollo/react-hooks';
 
-const Item = ({ title, thumbnail_url, price }) => {
+const Item = ({ id, title, thumbnail_url, price }) => {
+  const [addItemToCart] = useMutation(MUTATION_ADD_ITEM_TO_CART, {
+    variables: { id: id },
+  });
   const currency = 'USD';
 
   return (
@@ -13,7 +18,9 @@ const Item = ({ title, thumbnail_url, price }) => {
           {currency === 'EUR' ? '€' : '$'} {price.toFixed(2)}
         </Card.Meta>
       </Card.Content>
-      <Card.Content as={Button}>Add to cart</Card.Content>
+      <Card.Content as={Button} onClick={addItemToCart}>
+        Add to cart
+      </Card.Content>
     </Card>
   );
 };
