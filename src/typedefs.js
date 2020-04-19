@@ -1,6 +1,6 @@
 import { gql } from "apollo-boost";
 
-const QUERY_AVAILABLE_ITEMS = gql`
+export const QUERY_AVAILABLE_ITEMS = gql`
   query {
     itemsForSale @client {
       id
@@ -10,4 +10,17 @@ const QUERY_AVAILABLE_ITEMS = gql`
     }
   }
 `;
-export default QUERY_AVAILABLE_ITEMS;
+export const QUERY_CART_INFO = gql`
+  query {
+    cart @client {
+      items {
+        id
+        title
+        thumbnail_url
+        price
+      }
+      total
+    }
+    currency @client
+  }
+`;
