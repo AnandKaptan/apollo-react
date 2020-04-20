@@ -1,13 +1,14 @@
 import React from 'react';
 import { Card, Button, Image } from 'semantic-ui-react';
-import { MUTATION_ADD_ITEM_TO_CART } from '../typedefs';
-import { useMutation } from '@apollo/react-hooks';
+import { MUTATION_ADD_ITEM_TO_CART, QUERY_CURRENT_CURRENCY } from '../typedefs';
+import { useMutation, useQuery } from '@apollo/react-hooks';
 
 const Item = ({ id, title, thumbnail_url, price }) => {
   const [addItemToCart] = useMutation(MUTATION_ADD_ITEM_TO_CART, {
     variables: { id: id },
   });
-  const currency = 'USD';
+  const { data } = useQuery(QUERY_CURRENT_CURRENCY);
+  const { currency } = data;
 
   return (
     <Card>
