@@ -1,5 +1,10 @@
 import { gql } from "apollo-boost";
 
+export const QUERY_CURRENT_CURRENCY = gql`
+  query {
+    currency @client
+  }
+`;
 export const QUERY_AVAILABLE_ITEMS = gql`
   query {
     itemsForSale @client {
@@ -33,5 +38,10 @@ export const MUTATION_ADD_ITEM_TO_CART = gql`
 export const MUTATION_DELETE_ITEM_FROM_CART = gql`
   mutation($id: String!) {
     deleteItemFromCart(id: $id) @client
+  }
+`;
+export const MUTATION_CONVERT_CURRENCY = gql`
+  mutation($newCurrency: String!) {
+    convertCurrency(newCurrency: $newCurrency) @client
   }
 `;

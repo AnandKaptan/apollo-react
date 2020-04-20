@@ -9,6 +9,7 @@ import {
   Button,
 } from 'semantic-ui-react';
 import { QUERY_CART_INFO, MUTATION_DELETE_ITEM_FROM_CART } from '../typedefs';
+import CurrencyButtons from './CurrencyButtons';
 
 const UserCart = () => {
   const { data, loading } = useQuery(QUERY_CART_INFO);
@@ -32,7 +33,7 @@ const UserCart = () => {
           {data.cart.items.map((item) => (
             <Table.Row key={item.id}>
               <Table.Cell>{item.title}</Table.Cell>
-              <Table.Cell>{item.price}</Table.Cell>
+              <Table.Cell>{item.price.toFixed(2)}</Table.Cell>
               <Table.Cell>
                 <Button
                   circular
@@ -57,6 +58,7 @@ const UserCart = () => {
           </Table.Row>
         </Table.Footer>
       </Table>
+      <CurrencyButtons currency={data.currency} />
     </Segment>
   );
 };
